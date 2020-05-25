@@ -236,6 +236,16 @@ RCT_EXPORT_METHOD(joinMeeting:(NSDictionary *) options resolver:(RCTPromiseResol
     _meetingResolver = nil;
 }
 
+- (void)onZoomIdentityExpired
+{
+  if (!_meetingRejecter) {
+      return;
+  }
+  _meetingRejecter([@(MobileRTCMeetError_Unknown) stringValue], @"ZOOM credentials expired.", nil);
+  _meetingRejecter = nil;
+  _meetingResolver = nil;
+}
+
 - (void)onMeetingStateChange:(MobileRTCMeetingState)state
 {
     NSLog(@"onMeetingStateChange:%d", state);
