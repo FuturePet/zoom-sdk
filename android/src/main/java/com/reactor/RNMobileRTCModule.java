@@ -298,6 +298,6 @@ public class RNMobileRTCModule extends ReactContextBaseJavaModule implements Mee
 
   @Override
   public void onZoomAuthIdentityExpired() {
-      mPromise.reject("ZOOM JTW token is expired, please generate a new token");
+      mPromise.reject("ZOOM credentials expired.");
   }
 }
